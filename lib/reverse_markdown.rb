@@ -15,6 +15,7 @@ require 'reverse_markdown/converters/div'
 require 'reverse_markdown/converters/drop'
 require 'reverse_markdown/converters/details'
 require 'reverse_markdown/converters/em'
+require 'reverse_markdown/converters/u'
 require 'reverse_markdown/converters/figcaption'
 require 'reverse_markdown/converters/figure'
 require 'reverse_markdown/converters/h'
@@ -31,6 +32,7 @@ require 'reverse_markdown/converters/table'
 require 'reverse_markdown/converters/td'
 require 'reverse_markdown/converters/text'
 require 'reverse_markdown/converters/tr'
+require 'ext/numeric'
 
 module ReverseMarkdown
 

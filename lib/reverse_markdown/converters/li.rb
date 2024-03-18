@@ -6,16 +6,18 @@ module ReverseMarkdown
         content_node             = contains_child_paragraph ? node.first_element_child : node
         content                  = treat_children(content_node, state)
         indentation              = indentation_from(state)
-        prefix                   = prefix_for(node)
+        prefix                   = prefix_for(node, state)
 
         "#{indentation}#{prefix}#{content.chomp}\n" +
           (contains_child_paragraph ? "\n" : '')
       end
 
-      def prefix_for(node)
+      def prefix_for(node, state)
         if node.parent.name == 'ol'
           index = node.parent.xpath('li').index(node)
-          "#{index.to_i + 1}. "
+          depth = [state.fetch(:ol_count, 0) - 1, 0].max
+          prefix_converter = %i[itself roman alphabet][depth % 3]
+          "#{(index.to_i + 1).public_send(prefix_converter)}. "
         else
           '- '
         end
