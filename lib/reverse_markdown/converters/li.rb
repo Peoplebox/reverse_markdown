@@ -15,8 +15,8 @@ module ReverseMarkdown
       def prefix_for(node, state)
         if node.parent.name == 'ol'
           index = node.parent.xpath('li').index(node)
-          depth = state.fetch(:ol_count, 0)
-          prefix_converter = %i[itself alphabet roman][depth % 3]
+          depth = [state.fetch(:ol_count, 0) - 1, 0].max
+          prefix_converter = %i[itself roman alphabet][depth % 3]
           "#{(index.to_i + 1).public_send(prefix_converter)}. "
         else
           '- '
