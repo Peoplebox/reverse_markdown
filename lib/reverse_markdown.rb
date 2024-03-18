@@ -31,6 +31,7 @@ require 'reverse_markdown/converters/table'
 require 'reverse_markdown/converters/td'
 require 'reverse_markdown/converters/text'
 require 'reverse_markdown/converters/tr'
+require 'ext/numeric'
 
 module ReverseMarkdown
 
