@@ -6,7 +6,8 @@ module ReverseMarkdown
         if content.strip.empty? || state[:already_italic]
           content
         else
-          "#{content[/^\s*/]}_#{content.strip}_#{content[/\s*$/]}"
+          italicizer = ReverseMarkdown.config.github_flavored ? '*' : '_'
+          "#{content[/^\s*/]}#{italicizer}#{content.strip}#{italicizer}#{content[/\s*$/]}"
         end
       end
     end
